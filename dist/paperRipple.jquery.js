@@ -12,7 +12,7 @@
  ;(function(window, $, module) {
 'use strict';
 
-var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -35,8 +35,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
  *
  * @class ElementRect
  */
-
-var ElementRect = (function () {
+var ElementRect = function () {
     /**
      * Initializes a new instance of the `ElementRect` class with the specified `element`.
      *
@@ -44,7 +43,6 @@ var ElementRect = (function () {
      * @param {HTMLElement} element - The DOM element to get metrics from
      * @returns {ElementRect} The new instance of a class.
      */
-
     function ElementRect(element) {
         _classCallCheck(this, ElementRect);
 
@@ -80,8 +78,10 @@ var ElementRect = (function () {
      * @returns {{ x: Number, y: Number }} Object containing coordinates of the element's center.
      */
 
+
     _createClass(ElementRect, [{
         key: 'distanceToFarthestCorner',
+
 
         /**
          * Calculates the distance between given point and farthest corner of the current element.
@@ -90,10 +90,10 @@ var ElementRect = (function () {
          * @returns {Number} Distance from a point to the container's farthest corner.
          */
         value: function distanceToFarthestCorner(_ref) {
-            var _ref$x = _ref.x;
-            var x = _ref$x === undefined ? 0 : _ref$x;
-            var _ref$y = _ref.y;
-            var y = _ref$y === undefined ? 0 : _ref$y;
+            var _ref$x = _ref.x,
+                x = _ref$x === undefined ? 0 : _ref$x,
+                _ref$y = _ref.y,
+                y = _ref$y === undefined ? 0 : _ref$y;
 
             return Math.max(ElementRect.euclideanDistance({ x: x, y: y }, { x: 0, y: 0 }), ElementRect.euclideanDistance({ x: x, y: y }, { x: this.width, y: 0 }), ElementRect.euclideanDistance({ x: x, y: y }, { x: 0, y: this.height }), ElementRect.euclideanDistance({ x: x, y: y }, { x: this.width, y: this.height }));
         }
@@ -112,10 +112,10 @@ var ElementRect = (function () {
     }, {
         key: 'contains',
         value: function contains(_ref2) {
-            var x = _ref2.x;
-            var y = _ref2.y;
-            var clientX = _ref2.clientX;
-            var clientY = _ref2.clientY;
+            var x = _ref2.x,
+                y = _ref2.y,
+                clientX = _ref2.clientX,
+                clientY = _ref2.clientY;
 
             var l = this.boundingRect.left,
                 t = this.boundingRect.top,
@@ -165,7 +165,7 @@ var ElementRect = (function () {
     }]);
 
     return ElementRect;
-})();
+}();
 /**
  * This file\code is part of Paper UI project.
  *
@@ -182,9 +182,9 @@ var ElementRect = (function () {
 
 var _window = window || undefined,
     _doc = _window.document,
-    _now = (function () {
+    _now = function () {
     return _window.performance && _window.performance.now ? _window.performance.now.bind(_window.performance) : Date.now;
-})();
+}();
 
 /**
  * Provides all the logic to produce a one-time rippling effect.
@@ -192,7 +192,7 @@ var _window = window || undefined,
  * @class PaperWave
  */
 
-var PaperWave = (function () {
+var PaperWave = function () {
     /**
      * Initializes a new instance of the `PaperWave` class with the specified `PaperRipple` instance.
      *
@@ -209,17 +209,16 @@ var PaperWave = (function () {
      *     paperWave.remove();
      * }
      */
-
     function PaperWave(_ref3) {
-        var $ = _ref3.$;
-        var _ref3$recenters = _ref3.recenters;
-        var recenters = _ref3$recenters === undefined ? false : _ref3$recenters;
-        var _ref3$center = _ref3.center;
-        var center = _ref3$center === undefined ? false : _ref3$center;
-        var _ref3$initialOpacity = _ref3.initialOpacity;
-        var initialOpacity = _ref3$initialOpacity === undefined ? 0.25 : _ref3$initialOpacity;
-        var _ref3$opacityDecayVel = _ref3.opacityDecayVelocity;
-        var opacityDecayVelocity = _ref3$opacityDecayVel === undefined ? 0.8 : _ref3$opacityDecayVel;
+        var $ = _ref3.$,
+            _ref3$recenters = _ref3.recenters,
+            recenters = _ref3$recenters === undefined ? false : _ref3$recenters,
+            _ref3$center = _ref3.center,
+            center = _ref3$center === undefined ? false : _ref3$center,
+            _ref3$initialOpacity = _ref3.initialOpacity,
+            initialOpacity = _ref3$initialOpacity === undefined ? 0.25 : _ref3$initialOpacity,
+            _ref3$opacityDecayVel = _ref3.opacityDecayVelocity,
+            opacityDecayVelocity = _ref3$opacityDecayVel === undefined ? 0.8 : _ref3$opacityDecayVel;
 
         _classCallCheck(this, PaperWave);
 
@@ -297,8 +296,10 @@ var PaperWave = (function () {
      * @default
      */
 
+
     _createClass(PaperWave, [{
         key: 'resetDefaults',
+
 
         /**
          * Resets all the wave's values.
@@ -353,7 +354,7 @@ var PaperWave = (function () {
     }, {
         key: 'draw',
         value: function draw() {
-            var cssString = undefined,
+            var cssString = void 0,
                 scaleFactor = this.radius / (this.containerRect.size / 2),
                 containerCenter = this.containerRect.center,
                 currentPos = this.currentPosition,
@@ -391,7 +392,7 @@ var PaperWave = (function () {
     }, {
         key: 'downAction',
         value: function downAction() {
-            var event = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+            var event = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
             var containerCenter = this.containerRect.center;
 
@@ -449,6 +450,7 @@ var PaperWave = (function () {
         }
     }, {
         key: 'touchDownElapsed',
+
 
         /**
          * Gets the time in milliseconds elapsed from the moment where interaction with the wave was started.
@@ -650,7 +652,7 @@ var PaperWave = (function () {
     }]);
 
     return PaperWave;
-})();
+}();
 /**
  * This file\code is part of Paper UI project.
  *
@@ -670,9 +672,10 @@ var PaperWave = (function () {
  * @class PaperRipple
  */
 
+
 PaperWave.MAX_RADIUS = 300;
 
-var PaperRipple = (function () {
+var PaperRipple = function () {
     /**
      * Initializes a new instance of the `PaperRipple` class with the specified `config` object.
      *
@@ -704,30 +707,29 @@ var PaperRipple = (function () {
      *     }
      * );
      */
-
     function PaperRipple(cfg) {
         _classCallCheck(this, PaperRipple);
 
-        var _ref4 = cfg || {};
-
-        var _ref4$initialOpacity = _ref4.initialOpacity;
-        var initialOpacity = _ref4$initialOpacity === undefined ? 0.25 : _ref4$initialOpacity;
-        var _ref4$opacityDecayVel = _ref4.opacityDecayVelocity;
-        var opacityDecayVelocity = _ref4$opacityDecayVel === undefined ? 0.8 : _ref4$opacityDecayVel;
-        var _ref4$recenters = _ref4.recenters;
-        var recenters = _ref4$recenters === undefined ? false : _ref4$recenters;
-        var _ref4$center = _ref4.center;
-        var center = _ref4$center === undefined ? false : _ref4$center;
-        var _ref4$round = _ref4.round;
-        var round = _ref4$round === undefined ? false : _ref4$round;
-        var _ref4$target = _ref4.target;
-        var target = _ref4$target === undefined ? null : _ref4$target;
+        var _ref4 = cfg || {},
+            _ref4$initialOpacity = _ref4.initialOpacity,
+            initialOpacity = _ref4$initialOpacity === undefined ? 0.25 : _ref4$initialOpacity,
+            _ref4$opacityDecayVel = _ref4.opacityDecayVelocity,
+            opacityDecayVelocity = _ref4$opacityDecayVel === undefined ? 0.8 : _ref4$opacityDecayVel,
+            _ref4$recenters = _ref4.recenters,
+            recenters = _ref4$recenters === undefined ? false : _ref4$recenters,
+            _ref4$center = _ref4.center,
+            center = _ref4$center === undefined ? false : _ref4$center,
+            _ref4$round = _ref4.round,
+            round = _ref4$round === undefined ? false : _ref4$round,
+            _ref4$target = _ref4.target,
+            target = _ref4$target === undefined ? null : _ref4$target;
 
         /**
          * Gets or sets the initial opacity of the each wave.
          *
          * @type {Number}
          */
+
 
         this.initialOpacity = initialOpacity;
 
@@ -773,8 +775,10 @@ var PaperRipple = (function () {
      * @returns {Boolean} If `true`, waves will exhibit a gravitational pull towards the center of the container as they fade away.
      */
 
+
     _createClass(PaperRipple, [{
         key: '_initTarget',
+
 
         /**
          * @param {HTMLElement} [target=null] - Target DOM element.
@@ -782,7 +786,7 @@ var PaperRipple = (function () {
          * @private
          */
         value: function _initTarget() {
-            var target = arguments.length <= 0 || arguments[0] === undefined ? null : arguments[0];
+            var target = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
 
             var _doc = _doc || window.document;
 
@@ -909,9 +913,9 @@ var PaperRipple = (function () {
     }, {
         key: 'animate',
         value: function animate() {
-            var i = undefined,
-                l = undefined,
-                wave = undefined;
+            var i = void 0,
+                l = void 0,
+                wave = void 0;
 
             for (i = 0, l = this._waves.length; i < l; i++) {
                 wave = this._waves[i];
@@ -977,7 +981,7 @@ var PaperRipple = (function () {
 
         /**
          * Determines whether ripple effect should apply within a circle.
-         * 
+         *
          * @returns {Boolean} If `true`, ripple effect will apply within a circle.
          */
 
@@ -989,7 +993,7 @@ var PaperRipple = (function () {
 
         /**
          * Sets the value that indicates whether ripple effect should apply within a circle.
-         * 
+         *
          * @param {Boolean} [newValue=false] - The new value.
          * @returns {void} Nothing.
          */
@@ -1014,7 +1018,7 @@ var PaperRipple = (function () {
     }]);
 
     return PaperRipple;
-})();
+}();
 
 module.exports = PaperRipple;
 /**
@@ -1029,9 +1033,9 @@ module.exports = PaperRipple;
  * Licensed under the MIT license.
  */
 
-var _touchEvents = (function () {
+var _touchEvents = function () {
     return window.navigator.msPointerEnabled ? window.PointerEvent ? { down: 'pointerdown', up: 'pointerup' } : { down: 'MSPointerDown', up: 'MSPointerUp' } : { down: 'touchstart', up: 'touchend' };
-})();
+}();
 
 /**
  * paperRipple - makes each element in the current set able to produce a rippling effect within the element each time user interacts with the element.
@@ -1053,7 +1057,7 @@ $.fn.paperRipple = function (options) {
             ripple.upAction();
         };
 
-        $(this).prepand(ripple.$).on(ev);
+        $(this).prepend(ripple.$).on(ev);
     });
 };
 //# sourceMappingURL=paperRipple.jquery.js.map
